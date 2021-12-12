@@ -19,13 +19,13 @@ public class listAdapter extends RecyclerView.Adapter <listAdapter.listViewHolde
     public listAdapter(List<Students> studentsList) {
         this.studentsList = studentsList;
     }
-
+    @NonNull
     @Override
     public listViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext())
+        View itemview = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_layout, parent, false);
-        return new listViewHolder(view);
+        return new listViewHolder(itemview);
     }
 
     @Override
