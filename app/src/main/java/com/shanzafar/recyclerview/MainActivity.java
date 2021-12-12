@@ -12,13 +12,16 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
     List<Students> studentsList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RecyclerView list = (RecyclerView) findViewById(R.id.list);
-        list.setLayoutManager(new LinearLayoutManager(this));
+       // RecyclerView list = (RecyclerView) findViewById(R.id.list);
+       // list.setLayoutManager(new LinearLayoutManager(this));
         Students f0 = new Students(1,"Asad", R.drawable.d);
         Students f1 = new Students(2,"Zubair", R.drawable.c);
         Students f2 = new Students(3,"Musa", R.drawable.b);
@@ -33,8 +36,13 @@ public class MainActivity extends AppCompatActivity {
         Students f11 = new Students(8,"Waseem",R.drawable.b);
 
         studentsList.addAll(Arrays.asList(new Students[]{f0,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11}));
-        list = findViewById(R.id.list);
-
-        list.setHasFixedSize(true);
+        recyclerView = findViewById(R.id.list);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(MainActivity.this);
+        recyclerView.setLayoutManager(layoutManager);
+      //  list = findViewById(R.id.list);
+        adapter = new listAdapter(studentsList) ;
+        recyclerView.setAdapter(adapter);
+        //list.setHasFixedSize(true);
     }
 }

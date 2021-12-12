@@ -16,15 +16,15 @@ public class listAdapter extends RecyclerView.Adapter <listAdapter.listViewHolde
     List<Students> studentsList;
 
 
-    public listAdapter(String[] data)
-    {
-        this.data = data;
+    public listAdapter(List<Students> studentsList) {
+        this.studentsList = studentsList;
     }
+
     @Override
     public listViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        LayoutInflater inflator = LayoutInflater.from(parent.getContext());
-        View view = inflator.inflate(R.layout.list_item_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.list_item_layout, parent, false);
         return new listViewHolder(view);
     }
 
@@ -32,13 +32,14 @@ public class listAdapter extends RecyclerView.Adapter <listAdapter.listViewHolde
     public void onBindViewHolder(@NonNull listAdapter.listViewHolder holder, int position) {
 
         holder.data = studentsList.get(position);
-        holder.textViewFriendName.setText(holder.data.getName());
+        holder.text.setText(holder.data.getName());
+        holder.img.setImageResource(holder.data.getImageId());
     }
 
     @Override
     public int getItemCount() {
 
-        return data.length;
+        return studentsList.size();
     }
 
     public class listViewHolder extends RecyclerView.ViewHolder{
