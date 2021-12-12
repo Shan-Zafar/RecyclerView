@@ -37,8 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
         studentsList.addAll(Arrays.asList(new Students[]{f0,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11}));
         recyclerView = findViewById(R.id.list);
+
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(MainActivity.this);
+        layoutManager = new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
       //  list = findViewById(R.id.list);
         adapter = new listAdapter(studentsList) ;
